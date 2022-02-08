@@ -1,43 +1,65 @@
 
-//1
-const button= document.querySelector("button");
+// Button selection
+const button= document.querySelector("#toJson");
 button.addEventListener("click", convertToJson);
+
+
 
 function convertToJson(event){
     event.preventDefault()
    
-
-
-    const textInput= document.querySelector("textarea").value;//Takes textarea´s data
+    //Takes textarea´s data and returns array of objects
+    const textInput= document.querySelector("textarea").value;
    
-    let lines = textInput.split("\n"); //the result is an array
-
+    
+    let lines = textInput.split("\n"); // lines without line break
     lines = lines.map(line => {     // it returns an array of arrays
         return line.split(",") ;
     });
+
     
-    let firstLine = lines.shift();
-    
-    let result= lines.map(line => {  //Create an object of each array of arrays
-        const myObject = {
-            id: line[0],
-            userName: line[1]
+    let firstLine = lines.shift(); // takes only the first line (Keys but we don't know how many)
+    debugger
+    let result= lines.map(line => {  // creates an array of objects
+        
+        const myObject = {}
+        for(var i = 0; i < firstLine.length; i++){
+          let key = firstLine[i];
+          myObject[key] = line[i].replaceAll(`"`,"")
         }
+       
+        
         return myObject;
+        
     });
-    console.log(result);
-    
-
-
+    console.log(firstLine)
 
     
 
+
+
+    const textOutput = document.getElementById("json"); // selecting Output textarea
+    textOutput.value = JSON.stringify(result); // assigning the result and convert it into a string
+    
+
+      
+
+
+
+
+    
 }
 
 
-// pass textarea data to textarea
-// convert CSV data to JSON
+    
+    
+
+
+
+
+// display data into textarea
 // convert JSON data to CSV
+// display data into textarea
 
 
 
