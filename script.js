@@ -19,7 +19,7 @@ function convertToJson(event){
 
     
     let firstLine = lines.shift(); // takes only the first line (Keys but we don't know how many)
-    debugger
+    
     let result= lines.map(line => {  // creates an array of objects
         
         const myObject = {}
@@ -32,7 +32,7 @@ function convertToJson(event){
         return myObject;
         
     });
-    console.log(firstLine)
+    
 
     
 
@@ -53,14 +53,6 @@ function convertToJson(event){
 
     
     
-
-
-
-
-// display data into textarea
-// convert JSON data to CSV
-// display data into textarea
-
 
 
 
